@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo</title>
+    <style>
+        #screen {
+            border: 10px solid #CCC;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="screen" height="10" width="10"></canvas>
+    <input id="player-id" type="text" value="">
+    <button onclick="adicionarJogador()">Add player</button>
+
+    <script src="./keyboardlistener.js"></script>
+    <script src="./jogo.js"></script>
+    <script src="./renderscreen.js"></script>
+
+    <script>
+        function keybordHandler(event) {
+            console.log(event.key);
+        }
+        createKeyboardListener(document, keybordHandler);
+
+
+        canvas = document.getElementById('screen')
+        ctx = canvas.getContext('2d');
+
+        jogo = {
+            "players": {
+                "player1": {
+                    color: "orange",
+                    x: 1,
+                    y: 1,
+                }
+            },
+            "fruits": {
+
+            },
+            screen: {
+                x: 10,
+                y: 10
+            }
+
+        }
+        // startGame(jogo);
+
+        renderScreen(jogo, ctx);
+
+        inputPlayer = document.getElementById('player-id');
+
+        function adicionarJogador() {
+
+            addPlayer(jogo, inputPlayer.value)
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
